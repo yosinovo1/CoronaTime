@@ -12,7 +12,7 @@ Topic | Path in Repo | Summary
 [Rust](#Rust) | - |
 [Kafka](#Kafka) | - |
 [Rabbitmq](#Rabbitmq) | - |
-[Grapthql](#Grapthql) | - |
+[Graphql](#Graphql) | - |
 [Android](#Android) | - |
 [C](#C) | - |
 [NodeJS](#NodeJS) | - |
@@ -33,7 +33,7 @@ Site: https://golang.org/
 
 #### Rabbitmq
 
-#### Grapthql
+#### Graphql
 
 #### Android
 
