@@ -21,13 +21,14 @@ Topic | Path in Repo | Summary
 ---
 #### GO
 Google's new low-level programming language<br>
-Site: https://golang.org/
+[Site](https://golang.org/)
 
 #### Design Patterns
 
-Basic design pattern examples (mainly in Python)<br>
-Includes:
-- duck typing
+* Basic design pattern examples (mainly in Python)<br>
+  Includes:
+  - duck typing
+* Articles: https://python-patterns.guide/
 
 #### Machine Learning
 
@@ -38,6 +39,9 @@ Includes:
 #### Rabbitmq
 
 #### Graphql
+* [Theory](https://www.howtographql.com/)
+* [Ohad's dotnet example](https://github.com/oazmiry/products)
+* [A more complete (and official) example](https://github.com/graphql-dotnet/graphql-dotnet/tree/master/src/GraphQL.StarWars)
 
 #### Android
 
