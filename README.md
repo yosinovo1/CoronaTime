@@ -25,12 +25,25 @@ Google's new low-level programming language<br>
 
 #### Design Patterns
 
-* Basic design pattern examples (mainly in Python)<br>
-  Includes:
-  - duck typing
 * Articles: 
   - https://python-patterns.guide/
   - https://www.toptal.com/python/python-design-patterns
+
+* Basic design pattern code examples (mainly in Python)<br>
+  - Duck Typing
+
+  Missing code examples:
+  - Chain of responsibility
+  - Command
+  - Interpreter
+  - Iterator
+  - Mediator
+  - Memento
+  - Observer
+  - State
+  - Strategy
+  - Template
+  - Visitor
 
 #### Machine Learning
 
