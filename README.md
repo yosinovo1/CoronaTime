@@ -33,17 +33,7 @@ Google's new low-level programming language<br>
   - Duck Typing
   - Chain of responsibility
   - Command
-
-  Missing code examples:
-  - Interpreter
-  - Iterator
-  - Mediator
-  - Memento
-  - Observer
-  - State
-  - Strategy
-  - Template
-  - Visitor
+  - Dependency Injection
 
 #### Machine Learning
 
