@@ -34,6 +34,9 @@ Google's new low-level programming language<br>
   - Chain of responsibility
   - Command
   - Dependency Injection
+  - Facade
+  - Adapter
+  - Decorator
 
 #### Machine Learning
 
