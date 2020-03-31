@@ -32,10 +32,9 @@ Google's new low-level programming language<br>
 * Basic design pattern code examples (mainly in Python)<br>
   - Duck Typing
   - Chain of responsibility
-
+  - Command
 
   Missing code examples:
-  - Command
   - Interpreter
   - Iterator
   - Mediator
