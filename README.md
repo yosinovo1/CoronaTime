@@ -38,6 +38,17 @@ Google's new low-level programming language<br>
   - Adapter
   - Decorator
 
+  Missing:
+  - Interpreter
+  - Iterator
+  - Mediator
+  - Memento
+  - Observer
+  - State
+  - Strategy
+  - Template
+  - Visitor
+
 #### Machine Learning
 
 #### Rust
