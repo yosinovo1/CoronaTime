@@ -6,21 +6,18 @@ Repository for sharing learning materials throughout the Corona time.
 
 Topic | Path in Repo | Summary 
 :----:|:------------:|:------
-[Go](#Go) | \Programming Languages\Go | Google's new low-level programming language
+[Go](#Go) | \Programming Languages\Go | Google's low-level programming language
 [Design Patterns](#Design-Patterns) | \Programming Languages\Python\Design Patterns | Basic design pattern examples (mainly in Python)
 [Machine Learning](#Machine-Learning) | - |
-[Rust](#Rust) | - |
-[Kafka](#Kafka) | - |
-[Rabbitmq](#Rabbitmq) | - |
-[Graphql](#Graphql) | - |
-[Android](#Android) | - |
-[C](#C) | - |
-[NodeJS](#NodeJS) | - |
+[Rust](#Rust) | - | A low-level programming language which syntactically similar to C++, but provides memory safety without using garbage collection.
+[Kafka](#Kafka) | - | Apache's distributed streaming platform
+[Rabbitmq](#Rabbitmq) | - | An open source message broker
+[Graphql](#Graphql) | - | A query language for APIs
+[React](#React) | - | A JavaScript library for building user interfaces.
 
 ## Info
 ---
 #### GO
-Google's new low-level programming language<br>
 [Site](https://golang.org/)
 
 #### Design Patterns
@@ -52,18 +49,19 @@ Google's new low-level programming language<br>
 #### Machine Learning
 
 #### Rust
+[Site](https://www.rust-lang.org/)
 
 #### Kafka
+[Site](https://kafka.apache.org/)
 
 #### Rabbitmq
+[Site](https://www.rabbitmq.com/)
 
 #### Graphql
+* [Site](https://graphql.org/)
 * [Theory](https://www.howtographql.com/)
 * [Ohad's dotnet example](https://github.com/oazmiry/products)
 * [A more complete (and official) example](https://github.com/graphql-dotnet/graphql-dotnet/tree/master/src/GraphQL.StarWars)
 
-#### Android
-
-#### C
-
-#### NodeJS
+#### React
+[Site](https://reactjs.org/)
