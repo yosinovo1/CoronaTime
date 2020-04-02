@@ -13,7 +13,7 @@ Topic | Path in Repo | Summary
 [Kafka](#Kafka) | - | Apache's distributed streaming platform
 [Rabbitmq](#Rabbitmq) | - | An open source message broker
 [Graphql](#Graphql) | - | A query language for APIs
-[React](#React) | - | A JavaScript library for building user interfaces.
+[React](#React) | \Programming Languages\JS\React | A JavaScript library for building user interfaces.
 
 ## Info
 ---
@@ -64,4 +64,6 @@ Topic | Path in Repo | Summary
 * [A more complete (and official) example](https://github.com/graphql-dotnet/graphql-dotnet/tree/master/src/GraphQL.StarWars)
 
 #### React
-[Site](https://reactjs.org/)
+* [Site](https://reactjs.org/)
+* Code:
+  * projects_viewer - simple data viewer with filter option
