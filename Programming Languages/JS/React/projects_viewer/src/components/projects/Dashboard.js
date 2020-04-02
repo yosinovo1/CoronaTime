@@ -38,10 +38,10 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div style={{"display": "flex", "flexWrap": "wrap", "alignItems": "left", "justifyContent": "center"}}>
+            <div style={{"display": "flex", "flexWrap": "wrap", "alignItems": "left", "justifyContent": "center", "flexDirection": "column"}}>
             {this.props.filteredProjects.map(projectData =>
-                <div style={{ "margin": "2rem", "display": "flex", "justifyContent": "center" }}>
-                    <Card variant="outlined" style={{ "width": "40vw", "textAlign": "right" }} >
+                <div style={{ "margin": "1rem", "display": "flex", "justifyContent": "center"}}>
+                    <Card variant="outlined" style={{ "width": "60vw", "textAlign": "right" }} >
                         <CardContent>
                             <Typography align="center" color="textPrimary" variant="h5" component="h1" gutterBottom>
                                 {projectData.serialNumber}
