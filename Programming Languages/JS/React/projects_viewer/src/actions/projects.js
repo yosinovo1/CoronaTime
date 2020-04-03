@@ -28,8 +28,13 @@ export const getProjects = () => dispatch => {
                     "lastname": "מגן",
                     "phonenumber": "0541234567"
                 },
-                "gush": 6948,
-                "helka": "80",
+                "location": {
+                    "gush": 6948,
+                    "gush2": 6947,
+                    "helka": ["80"],
+                    "helka2": [],
+                    "migrash": 4325,
+                },
                 "address": {
                     "city": "פתח תקווה",
                     "street_name": "קפלנסקי",
@@ -77,8 +82,13 @@ export const getProjects = () => dispatch => {
                     "lastname": "קלאוס",
                     "phonenumber": "0500001000"
                 },
-                "gush": 4892,
-                "helka": "3a",
+                "location": {
+                    "gush": 6948,
+                    "gush2": null,
+                    "helka": ["29"],
+                    "helka2": null,
+                    "migrash": null,
+                },
                 "address": {
                     "city": "תל אביב",
                     "street_name": "הברווז",
@@ -120,8 +130,13 @@ export const getProjects = () => dispatch => {
                     "lastname": "קלאוס",
                     "phonenumber": "0500001000"
                 },
-                "gush": 7382,
-                "helka": "122",
+                "location": {
+                    "gush": 7382,
+                    "gush2": null,
+                    "helka": ["122", "234", "126"],
+                    "helka2": null,
+                    "migrash": null,
+                },
                 "address": {
                     "city": "חדרה",
                     "street_name": "האתרוג",
