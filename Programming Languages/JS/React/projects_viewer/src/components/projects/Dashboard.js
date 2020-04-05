@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react';
-
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Divider from '@material-ui/core/Divider';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProjects, updateSelectedProject } from '../../actions/projects';
+
+import ProjectData from './ProjectData';
 
 class Dashboard extends Component {
     static propTypes = {
@@ -21,7 +19,7 @@ class Dashboard extends Component {
         this.showFields = ["serialNumber", "gush", "helka", "address", "customer", "created_by"];
     }
 
-    presentProject(projectData) {
+    presentBasicProject(projectData) {
         return (
             <Fragment>
                 {projectData.helka} / {projectData.gush} :גוש / חלקה<br />
@@ -32,35 +30,24 @@ class Dashboard extends Component {
         )
     }
 
-    showMore(projectSerial) {
-        alert(`Show more about ${projectSerial}`)
+    presentExtendedProject(projectData) {
+        return (
+            <Fragment>
+                <Divider style={{"marginTop": "1rem", "marginBottom": "1rem"}} />
+                {`${projectData.created_by.firstname} ${projectData.created_by.lastname}`} :נוצר על ידי<br />
+            </Fragment>
+        )
     }
 
     render() {
         return (
-            <div style={{"display": "flex", "flexWrap": "wrap", "alignItems": "left", "justifyContent": "center"}}>
-            {this.props.filteredProjects.map(projectData =>
-                <div style={{ "margin": "2rem", "display": "flex", "justifyContent": "center"}}>
-                    <Card variant="outlined" style={{ "minWidth":"250px", "maxWidth":"350px", "width": "30vw", "textAlign": "right" }} >
-                        <CardContent>
-                            <Typography align="center" color="textPrimary" variant="h5" component="h1" gutterBottom>
-                                {projectData.serialNumber}
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                            </Typography>
-                            <Card variant="outlined" style={{"padding": "1rem"}}>
-                                <Typography color="textSecondary">
-                                    {this.presentProject(projectData)}
-                                </Typography>
-                            </Card>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="medium" onClick={() => this.showMore(projectData.serialNumber)}>הצג עוד</Button>
-                        </CardActions>
-                    </Card>
+            <Fragment>
+                <div style={{"display": "flex", "flexWrap": "wrap", "alignItems": "left", "justifyContent": "center"}}>
+                    {this.props.filteredProjects.map(projectData =>
+                        <ProjectData key={projectData.serialNumber} projectData={projectData}/>
+                    )}
                 </div>
-            )}
-            </div>
+                </Fragment>
         )
     }
 }

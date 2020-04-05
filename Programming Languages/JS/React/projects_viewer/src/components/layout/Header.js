@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -46,7 +46,7 @@ class Header extends Component {
     render() {
         return (
             <div style={{ "backgroundColor": "rgba(255, 255, 255, 0.08)", "padding": "1em" }}>
-                <a href="#" style={{ "color": "white", textDecoration: "none" }}><h1 style={{ "margin": 0 }}>פרוייקטים</h1></a>
+                <a href="/#" style={{ "color": "white", textDecoration: "none" }}><h1 style={{ "margin": 0 }}>פרוייקטים</h1></a>
                 <TextField
                     label="חפש פרוייקט"
                     onChange={(e) => this.filterProjects(e.target.value)}
