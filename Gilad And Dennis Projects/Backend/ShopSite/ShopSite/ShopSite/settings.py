@@ -25,6 +25,10 @@ SECRET_KEY = 'narb+cb#f9*8o(lkicfw+9$tn@ay5i%k%m%y7-b7itb(e(%!aa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+"""
+CR:
+Nice idea, but this can be problematic (IP addresses can change), try to find a better solution.
+"""
 ALLOWED_HOSTS = ["192.168.1.21", "84.108.46.94"]
 
 
