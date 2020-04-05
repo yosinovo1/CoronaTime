@@ -21,7 +21,7 @@ class Header extends Component {
         return (
             <div style={{ "display": "flex", "backgroundColor": "rgba(255, 255, 255, 0.08)", "padding": "1em" }}>
                 <SideDrawer />
-                <a href="#" style={{ "color": "white", textDecoration: "none" }}><h3 style={{ "margin": 0 }}>Data Table</h3></a>
+                <a href="/#" style={{ "color": "white", textDecoration: "none" }}><h3 style={{ "margin": 0 }}>Data Table</h3></a>
             </div>
         )
     }

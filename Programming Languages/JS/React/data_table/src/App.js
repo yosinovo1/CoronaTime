@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { purple } from '@material-ui/core/colors';
 
 import './App.css';
 
