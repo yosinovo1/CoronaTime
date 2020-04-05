@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import RelativeTime from 'react-relative-time'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -40,8 +39,7 @@ class ProjectData extends Component {
         return (
             <Fragment>
                 <Divider style={{ "marginTop": "1rem", "marginBottom": "1rem" }} />
-                {this.projectData.creation_timestamp.slice(0, 16)} : תאריך יצירה<br />
-                {`${this.projectData.created_by.firstname} ${this.projectData.created_by.lastname}`} :נוצר על ידי<br />
+                {this.projectData.creation_timestamp.slice(0, 16)} בתאריך {`${this.projectData.created_by.firstname} ${this.projectData.created_by.lastname}`} נוצר על ידי
             </Fragment>
         )
     }

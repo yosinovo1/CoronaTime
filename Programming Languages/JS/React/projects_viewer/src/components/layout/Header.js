@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -45,16 +46,23 @@ class Header extends Component {
 
     render() {
         return (
-            <div style={{ "backgroundColor": "rgba(255, 255, 255, 0.08)", "padding": "1em" }}>
-                <a href="/#" style={{ "color": "white", textDecoration: "none" }}><h1 style={{ "margin": 0 }}>פרוייקטים</h1></a>
-                <TextField
-                    label="חפש פרוייקט"
-                    onChange={(e) => this.filterProjects(e.target.value)}
-                    autoFocus
-                    inputProps={{
-                        style: { textAlign: "right", width: 400 }
-                    }}
-                />
+            <div style={{ "padding": "0.5rem", "backgroundColor": "rgba(255, 255, 255, 0.08)", "display": "flex", "justifyContent": "space-between", "flexDirection": "row-reverse" }}>
+                <Typography variant="h6">
+                    פרוייקטים
+                </Typography>
+                <div className="SearchBar">
+                    <InputBase
+                        placeholder="...חפש בפרוייקטים"
+                        onChange={(e) => this.filterProjects(e.target.value)}
+                        autoFocus
+                        inputProps={{
+                            style: { textAlign: "right" }
+                        }}
+                    />
+                </div>
+                <Typography variant="h6">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </Typography>
             </div>
         )
     }

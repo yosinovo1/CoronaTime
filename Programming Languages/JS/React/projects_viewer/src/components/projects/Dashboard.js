@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 
 import { connect } from 'react-redux';
