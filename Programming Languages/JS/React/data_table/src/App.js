@@ -16,7 +16,7 @@ import {
 import { ThemeProvider } from "@material-ui/styles";
 import Header from './components/layout/Header';
 import Home from './components/common/Home';
-import Dashboard from './components/projects/Dashboard';
+import Dashboard from './components/people/Dashboard';
 
 const theme = createMuiTheme({
   palette: {

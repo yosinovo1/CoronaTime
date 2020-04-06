@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { getPeopleData, updateSelectedProject, updateFilteredProjects } from '../../actions/people';
 import SideDrawer from '../layout/SideDrawer';
 
 class Header extends Component {
-    static propTypes = {
-        projects: PropTypes.array.isRequired,
-        selectedProject: PropTypes.object
-    }
 
     constructor(props) {
         super(props);
