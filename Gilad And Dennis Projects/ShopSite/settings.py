@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+INTERNAL_HOST_IP = "192.168.1.21" 
+EXTERNAL_HOST_IP = "84.108.46.94"
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,12 +28,7 @@ SECRET_KEY = 'narb+cb#f9*8o(lkicfw+9$tn@ay5i%k%m%y7-b7itb(e(%!aa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-"""
-CR:
-Nice idea, but this can be problematic (IP addresses can change), try to find a better solution.
-"""
-ALLOWED_HOSTS = ["192.168.1.21", "84.108.46.94"]
-
+ALLOWED_HOSTS = [INTERNAL_HOST_IP, EXTERNAL_HOST_IP]
 
 # Application definition
 
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'shop',
 ]
 
