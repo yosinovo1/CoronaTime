@@ -30,7 +30,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Header />
-          <div style={{ "marginTop": "1rem", "display": "flex", "justify-content": "center" }}>
+          <div style={{ "marginLeft": "240px", "marginTop": "5rem", "display": "flex", "justify-content": "center" }}>
             <Switch>
               <Route path="/people" exact>
                 <Dashboard />

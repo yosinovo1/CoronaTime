@@ -29,6 +29,7 @@ class Dashboard extends Component {
     }
 
     render() {
+        let citiesLookup = { 1: 'Netanya', 2: 'Tel-Aviv' };
         return (
             <MuiThemeProvider theme={this.theme}>
                 <Card style={{ "display": "inline-block", "backgroundColor": "rgba(255, 255, 255, 0.05)", "margin": "1.5rem", "padding": "1.5rem" }}>
@@ -41,7 +42,7 @@ class Dashboard extends Component {
                             {
                                 title: 'Birth Place',
                                 field: 'birthCity',
-                                lookup: { 1: 'Netanya', 2: 'Tel-Aviv' },
+                                lookup: citiesLookup,
                             },
                         ]}
                         data={this.props.peopleData}
@@ -108,7 +109,7 @@ class Dashboard extends Component {
                         detailPanel={rowData => {
                             return (
                                 <div style={{ "display": "flex", "justifyContent": "center" }}>
-                                    <p>{`You clicked on ${rowData.name} ${rowData.surname}`}</p>
+                                    <p>{`${rowData.name} ${rowData.surname} was born in ${rowData.birthYear} at ${citiesLookup[rowData.birthCity]}`}</p>
                                 </div>
                             )
                         }}
