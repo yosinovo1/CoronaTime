@@ -56,7 +56,7 @@ class Header extends Component {
                         onChange={(e) => this.filterProjects(e.target.value)}
                         autoFocus
                         inputProps={{
-                            style: { textAlign: "right" }
+                            style: { textAlign: "right", width: "33vw", "padding": "0.5rem" }
                         }}
                     />
                 </div>

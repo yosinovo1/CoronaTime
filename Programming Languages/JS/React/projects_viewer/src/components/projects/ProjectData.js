@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
+import Collapse from '@material-ui/core/Collapse';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -57,8 +58,10 @@ class ProjectData extends Component {
                         <Card variant="outlined" style={{ "padding": "1rem" }}>
                             <Typography color="textSecondary">
                                 {this.presentBasicProject()}
-                                {this.state.expandInfo ? (this.presentExtendedProject()) : null}
                             </Typography>
+                            <Collapse in={this.state.expandInfo} timeout="auto" unmountOnExit>
+                                {this.presentExtendedProject()}
+                            </Collapse>
                         </Card>
                     </CardContent>
                     <CardActions>
