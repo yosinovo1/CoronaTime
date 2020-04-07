@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 
-import { getPeopleData } from '../../actions/people';
+import { getPeopleData, setPeopleData } from '../../actions/people';
 
 
 class Dashboard extends Component {
@@ -17,8 +17,6 @@ class Dashboard extends Component {
 
     constructor(props) {
         super(props);
-
-        this.showFields = ["serialNumber", "gush", "helka", "address", "customer", "created_by"];
         this.theme = createMuiTheme({
             palette: {
                 type: "dark",
@@ -27,6 +25,7 @@ class Dashboard extends Component {
                 },
             },
         });
+        this.props.getPeopleData()
     }
 
     render() {
@@ -54,6 +53,9 @@ class Dashboard extends Component {
                             sorting: true,
                             selection: true,
                             actionsColumnIndex: -1,
+                            headerStyle: {
+                                "fontWeight": "bold",
+                            }
                         }}
                         actions={[
                             {
@@ -63,9 +65,17 @@ class Dashboard extends Component {
                                 onClick: () => this.props.getPeopleData()
                             },
                             {
-                                tooltip: 'Remove All Selected Users',
+                                tooltip: 'Remove All Selected Rows',
                                 icon: 'delete',
-                                onClick: (evt, data) => alert('You want to delete ' + data.length + ' rows')
+                                onClick: (evt, dataToRemove) => {
+                                    const data = this.props.peopleData;
+                                    dataToRemove.forEach(element => {
+                                        const index = data.indexOf(element);
+                                        data.splice(index, 1)
+                                    });
+                                    this.props.getPeopleData()
+                                    this.props.setPeopleData(data);
+                                }
                             }
                         ]}
                         editable={{
@@ -73,9 +83,10 @@ class Dashboard extends Component {
                                 new Promise((resolve, reject) => {
                                     setTimeout(() => {
                                         {
-                                            const data = this.state.data;
+                                            const data = this.props.peopleData;
                                             data.push(newData);
-                                            this.setState({ data }, () => resolve());
+                                            this.props.getPeopleData();
+                                            this.props.setPeopleData(data);
                                         }
                                         resolve()
                                     }, 1000)
@@ -83,27 +94,16 @@ class Dashboard extends Component {
                             onRowUpdate: (newData, oldData) =>
                                 new Promise((resolve, reject) => {
                                     setTimeout(() => {
-                                        {
-                                            const data = this.state.data;
+                                        if (newData !== oldData) {
+                                            const data = this.props.peopleData;
                                             const index = data.indexOf(oldData);
                                             data[index] = newData;
-                                            this.setState({ data }, () => resolve());
+                                            this.props.getPeopleData()
+                                            this.props.setPeopleData(data);
                                         }
                                         resolve()
                                     }, 1000)
-                                }),
-                            // onRowDelete: oldData =>
-                            //     new Promise((resolve, reject) => {
-                            //         setTimeout(() => {
-                            //             {
-                            //                 let data = this.state.data;
-                            //                 const index = data.indexOf(oldData);
-                            //                 data.splice(index, 1);
-                            //                 this.setState({ data }, () => resolve());
-                            //             }
-                            //             resolve()
-                            //         }, 1000)
-                            //     }),
+                                })
                         }}
                         detailPanel={rowData => {
                             return (
@@ -124,4 +124,4 @@ const mapStateToProps = state => ({
     peopleData: state.people.peopleData
 });
 
-export default connect(mapStateToProps, { getPeopleData })(Dashboard)
+export default connect(mapStateToProps, { getPeopleData, setPeopleData })(Dashboard)

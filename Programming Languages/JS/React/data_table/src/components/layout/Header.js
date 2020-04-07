@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-import { getPeopleData, updateSelectedProject, updateFilteredProjects } from '../../actions/people';
 import SideDrawer from '../layout/SideDrawer';
 
 class Header extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.props.getPeopleData();
-    }
 
     render() {
         return (
@@ -22,7 +14,5 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-});
 
-export default connect(mapStateToProps, { getPeopleData, updateSelectedProject, updateFilteredProjects })(Header);
+export default Header;
