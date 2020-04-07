@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -19,11 +18,11 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
+        display: "flex",
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: "#222222"
+        backgroundColor: "#202020"
     },
     drawer: {
         width: drawerWidth,
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: "#222222"
+        backgroundColor: "#202020"
     },
     drawerContainer: {
         overflow: 'auto',
@@ -47,7 +46,6 @@ export default function Header() {
 
     return (
         <div className={classes.root}>
-            <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
