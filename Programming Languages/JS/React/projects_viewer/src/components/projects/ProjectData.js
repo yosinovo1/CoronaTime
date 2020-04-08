@@ -4,11 +4,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
+import EditIcon from '@material-ui/icons/Edit';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
@@ -129,12 +131,12 @@ class ProjectData extends Component {
                         </Card>
                     </CardContent>
                     <CardActions style={{"display": "flex", "justifyContent": "space-between"}}>
-                        {!this.state.editInfo && !this.state.saving ? <Button size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? "הצג פחות" : "הצג עוד" }</Button> : null}
-                        {!this.state.editInfo && !this.state.saving ? <Button size="medium" onClick={() => this.setState({ editInfo: !this.state.editInfo, expandInfo: false })}>ערוך</Button> : null}
+                        {!this.state.editInfo && !this.state.saving ? <Tooltip title={this.state.expandInfo ? "הצג פחות" : "הצג עוד" } aria-label="expand"><IconButton size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? <ExpandLessIcon /> : <ExpandMoreIcon /> }</IconButton></Tooltip> : null}
+                        {!this.state.editInfo && !this.state.saving ? <Tooltip title="ערוך" aria-label="edit"><IconButton size="medium" onClick={() => this.setState({ editInfo: !this.state.editInfo, expandInfo: false })}><EditIcon /></IconButton></Tooltip> : null}
                         {this.state.editInfo && !this.state.saving ? 
                             <Fragment>
-                                <Tooltip title="Save" aria-label="save"><IconButton onClick={() => this.handleCloseEdit(true)}><DoneIcon /></IconButton ></Tooltip>
-                                <Tooltip title="Cancel" aria-label="cancel"><IconButton onClick={() => this.handleCloseEdit(false)}><CloseIcon /></IconButton></Tooltip>
+                                <Tooltip title="שמור" aria-label="save"><IconButton onClick={() => this.handleCloseEdit(true)}><DoneIcon /></IconButton ></Tooltip>
+                                <Tooltip title="בטל" aria-label="cancel"><IconButton onClick={() => this.handleCloseEdit(false)}><CloseIcon /></IconButton></Tooltip>
                             </Fragment>
                             :
                             null
