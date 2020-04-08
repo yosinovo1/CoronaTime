@@ -4,12 +4,17 @@ import ReactDOM from 'react-dom';
 import Header from './layout/Header';
 import Dashboard from './projects/Dashboard';
 
+import { Provider } from 'react-redux';
+import store from '../store';
+
 class App extends Component {
     render() {
         return (
             <Fragment>
                 <Header />
-                <Dashboard />
+                <div style={{ "display": "flex", "justify - content": "center" }}>
+                    <Dashboard />
+                </div>
             </Fragment>
         )
     }

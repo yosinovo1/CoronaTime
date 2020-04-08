@@ -34,9 +34,6 @@ Topic | Path in Repo | Summary
   - Facade
   - Adapter
   - Decorator
-
-  Missing:
-  - Interpreter
   - Iterator
   - Mediator
   - Memento
