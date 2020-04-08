@@ -15,6 +15,7 @@ import PeopleIcon from '@material-ui/icons/Contacts';
 import HomeIcon from '@material-ui/icons/Home';
 
 const drawerWidth = 240;
+const headerHeight = 56;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,9 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: "#202020"
+        backgroundColor: "#202020",
+        boxShadow: "none",
+        height: headerHeight
     },
     drawer: {
         width: drawerWidth,
@@ -30,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: "#202020"
+        backgroundColor: "#202020",
+        border: "none"
     },
     drawerContainer: {
         overflow: 'auto',
@@ -48,9 +52,9 @@ export default function Header() {
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <Typography variant="h6" noWrap>
+                    <Typography variant="h6" >
                         Data Table
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer
