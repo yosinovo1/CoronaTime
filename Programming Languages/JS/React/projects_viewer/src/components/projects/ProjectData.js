@@ -7,6 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import CloseIcon from '@material-ui/icons/Close';
+import DoneIcon from '@material-ui/icons/Done';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 class ProjectData extends Component {
 
@@ -14,8 +21,11 @@ class ProjectData extends Component {
         super(props);
 
         this.projectData = props.projectData;
+        this.editableData = JSON.parse(JSON.stringify(this.projectData))
         this.state = {
-            expandInfo: false
+            expandInfo: false,
+            editInfo: false,
+            saving: false
         }
     }
 
@@ -45,6 +55,58 @@ class ProjectData extends Component {
         )
     }
 
+    presentEditableProject() {
+        return (
+            <form noValidate autoComplete="off">
+                <div style={{"padding": "1rem"}}>
+                    <Typography color="textPrimary">
+                        גוש\חלקה
+                    </Typography>
+                    <div style={{"display": "flex", "flexDirection": "row-reverse"}}>
+                        <TextField onChange={(e) => this.editableData.gush = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="גוש" defaultValue={this.projectData.gush} />
+                        <TextField onChange={(e) => this.editableData.helka = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="חלקה" defaultValue={this.projectData.helka} />
+                    </div>
+                </div>
+                <Divider />
+                <div style={{"padding": "1rem"}}>
+                    <Typography color="textPrimary">
+                        כתובת
+                    </Typography>
+                    <div style={{"display": "flex", "flexDirection": "row-reverse"}}>
+                        <TextField onChange={(e) => this.editableData.address.city = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="עיר" defaultValue={this.projectData.address.city} />
+                        <TextField onChange={(e) => this.editableData.address.street_name = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="רחוב" defaultValue={this.projectData.address.street_name} />
+                        <TextField onChange={(e) => this.editableData.address.house_number = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="מס' בית" defaultValue={this.projectData.address.house_number} />
+                    </div>
+                </div>
+                <Divider />
+                <div style={{"padding": "1rem"}}>
+                    <Typography color="textPrimary">
+                        לקוח
+                    </Typography>
+                    <div style={{"display": "flex", "flexDirection": "row-reverse"}}>
+                        <TextField onChange={(e) => this.editableData.customer.firstname = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="שם פרטי" defaultValue={this.projectData.customer.firstname} />
+                        <TextField onChange={(e) => this.editableData.customer.lastname = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="שם משפחה" defaultValue={this.projectData.customer.lastname} />
+                        <TextField onChange={(e) => this.editableData.customer.phonenumber = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="מס' פלאפון" defaultValue={this.projectData.customer.phonenumber} />
+                    </div>
+                </div>
+            </form>
+        )
+    }
+
+    handleCloseEdit(shouldSave) {
+        if(shouldSave) {
+            this.setState({ saving: true });
+            this.projectData = JSON.parse(JSON.stringify(this.editableData));
+        }
+        this.editableData = JSON.parse(JSON.stringify(this.projectData));
+        if(shouldSave) {
+            new Promise(resolve => setTimeout(resolve, 1250)).then(() => {this.setState({ editInfo: false, saving: false })})
+        }
+        else {
+            this.setState({ editInfo: false, saving: false })
+        }
+    }
+
     render() {
         return (
             <div style={{ "margin": "2rem", "display": "flex", "justifyContent": "center" }}>
@@ -53,19 +115,30 @@ class ProjectData extends Component {
                         <Typography align="center" color="textPrimary" variant="h5" component="h1" gutterBottom>
                             {this.projectData.serialNumber}
                         </Typography>
-                        <Typography variant="h5" component="h2">
-                        </Typography>
                         <Card variant="outlined" style={{ "padding": "1rem" }}>
+                            {this.state.saving ? <div style={{"display": "flex", "justifyContent": "center"}}><CircularProgress  /></div> : null}
                             <Typography color="textSecondary">
-                                {this.presentBasicProject()}
+                                {!this.state.editInfo && !this.state.saving ? this.presentBasicProject() : null}
+                                {this.state.editInfo ? this.presentEditableProject() : null}
                             </Typography>
                             <Collapse in={this.state.expandInfo} timeout="auto" unmountOnExit>
-                                {this.presentExtendedProject()}
+                                <Typography color="textSecondary">
+                                    {this.presentExtendedProject()}
+                                </Typography>
                             </Collapse>
                         </Card>
                     </CardContent>
-                    <CardActions>
-                        <Button size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? "הצג פחות" : "הצג עוד" }</Button>
+                    <CardActions style={{"display": "flex", "justifyContent": "space-between"}}>
+                        {!this.state.editInfo && !this.state.saving ? <Button size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? "הצג פחות" : "הצג עוד" }</Button> : null}
+                        {!this.state.editInfo && !this.state.saving ? <Button size="medium" onClick={() => this.setState({ editInfo: !this.state.editInfo, expandInfo: false })}>ערוך</Button> : null}
+                        {this.state.editInfo && !this.state.saving ? 
+                            <Fragment>
+                                <Tooltip title="Save" aria-label="save"><IconButton onClick={() => this.handleCloseEdit(true)}><DoneIcon /></IconButton ></Tooltip>
+                                <Tooltip title="Cancel" aria-label="cancel"><IconButton onClick={() => this.handleCloseEdit(false)}><CloseIcon /></IconButton></Tooltip>
+                            </Fragment>
+                            :
+                            null
+                        }
                     </CardActions>
                 </Card>
             </div>
