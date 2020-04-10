@@ -40,7 +40,9 @@ class ProjectData extends Component {
     presentBasicProject() {
         return (
             <Fragment>
-                {this.projectData.helka} / {this.projectData.gush} :גוש / חלקה<br />
+                {this.projectData.location.helka.join()} / {this.projectData.location.gush} :גוש / חלקה<br />
+                {this.projectData.location.helka2 ? this.projectData.location.helka2.join() : null} / {this.projectData.location.gush2} :2גוש2 / חלקה<br />
+                מגרש: {this.projectData.location.migrash}<br />
                 כתובת: {this.projectData.address.street_name} {this.projectData.address.house_number}, {this.projectData.address.city}<br />
                 לקוח: {this.projectData.customer.firstname} {this.projectData.customer.lastname}<br />
                 מס' טלפון: {this.projectData.customer.phonenumber}<br />
@@ -65,8 +67,10 @@ class ProjectData extends Component {
                         גוש\חלקה
                     </Typography>
                     <div style={{"display": "flex", "flexDirection": "row-reverse"}}>
-                        <TextField onChange={(e) => this.editableData.gush = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="גוש" defaultValue={this.projectData.gush} />
-                        <TextField onChange={(e) => this.editableData.helka = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="חלקה" defaultValue={this.projectData.helka} />
+                    <TextField onChange={(e) => this.editableData.location.gush = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="גוש" defaultValue={this.projectData.location.gush} />
+                        <TextField onChange={(e) => this.editableData.location.helka = (e.target.value).replace(/\s/g, '').split(",")} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="חלקה" defaultValue={this.projectData.location.helka} />
+                        <TextField onChange={(e) => this.editableData.location.gush2 = e.target.value} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="2 גוש" defaultValue={this.projectData.location.gush2} />
+                        <TextField onChange={(e) => this.editableData.location.helka2 = (e.target.value).replace(/\s/g, '').split(",")} style={{"paddingLeft": "0.5rem", "Width": "50px"}} id="standard-basic" label="2 חלקה" defaultValue={this.projectData.location.helka2} />
                     </div>
                 </div>
                 <Divider />

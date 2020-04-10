@@ -17,7 +17,7 @@ class Header extends Component {
         super(props);
 
         this.props.getProjects();
-        this.searchFields = ["serialNumber", "gush", "helka", "address", "customer"];
+        this.searchFields = ["serialNumber", "location", "address", "customer"];
     }
 
     filterProjects(inputValue) {
@@ -29,7 +29,7 @@ class Header extends Component {
         let shouldAdd = false;
 
         searchFields.forEach(field => {
-            if (!shouldAdd) {
+            if (!shouldAdd && projectData[field]) {
                 if (typeof projectData[field] === "object") {
                     // Search in all keys
                     shouldAdd = this.searchFieldsInProject(projectData[field], Object.keys(projectData[field]), inputValue)
