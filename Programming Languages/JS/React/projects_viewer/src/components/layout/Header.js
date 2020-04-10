@@ -53,6 +53,7 @@ class Header extends Component {
         .filter((inputValue) => !!inputValue)
         .reduce(
           (flag, inputValue) =>
+            flag &&
             this.searchFieldsInProject(
               projectData,
               this.searchFields,
