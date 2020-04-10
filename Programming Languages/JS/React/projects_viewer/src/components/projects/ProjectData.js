@@ -40,8 +40,8 @@ class ProjectData extends Component {
     presentBasicProject() {
         return (
             <Fragment>
-                {this.projectData.location.helka.join()} / {this.projectData.location.gush} :גוש / חלקה<br />
-                {this.projectData.location.helka2 ? this.projectData.location.helka2.join() : null} / {this.projectData.location.gush2} :2גוש2 / חלקה<br />
+                גוש / חלקה: {this.projectData.location.gush} / {this.projectData.location.helka.join()}<br />
+                גוש2 / חלקה2: {this.projectData.location.gush2} / {this.projectData.location.helka2 ? this.projectData.location.helka2.join() : null}<br />
                 מגרש: {this.projectData.location.migrash}<br />
                 כתובת: {this.projectData.address.street_name} {this.projectData.address.house_number}, {this.projectData.address.city}<br />
                 לקוח: {this.projectData.customer.firstname} {this.projectData.customer.lastname}<br />
