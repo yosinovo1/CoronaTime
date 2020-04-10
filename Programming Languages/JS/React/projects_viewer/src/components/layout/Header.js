@@ -7,6 +7,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProjects, updateSelectedProject, updateFilteredProjects } from '../../actions/projects';
 
+
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+
+
 class Header extends Component {
     static propTypes = {
         projects: PropTypes.array.isRequired,
@@ -18,6 +24,24 @@ class Header extends Component {
 
         this.props.getProjects();
         this.searchFields = ["serialNumber", "location", "address", "customer"];
+        this.classes = {
+            root: {
+                padding: '2px 4px',
+                display: 'flex',
+                alignItems: 'center',
+                width: 400,
+            },
+            input: {
+                flex: 1,
+            },
+            iconButton: {
+                padding: 10,
+            },
+            divider: {
+                height: 28,
+                margin: 4,
+            },
+        }
     }
 
     filterProjects(inputValue) {
@@ -50,7 +74,7 @@ class Header extends Component {
                 <Typography variant="h6">
                     פרוייקטים
                 </Typography>
-                <div className="SearchBar">
+                <Paper component="form" className={this.classes.root}>
                     <InputBase
                         placeholder="...חפש בפרוייקטים"
                         onChange={(e) => this.filterProjects(e.target.value)}
@@ -59,7 +83,10 @@ class Header extends Component {
                             style: { textAlign: "right", width: "33vw", "padding": "0.5rem" }
                         }}
                     />
-                </div>
+                    <IconButton className={this.classes.iconButton} aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Paper>
                 <Typography variant="h6">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Typography>
