@@ -1,0 +1,9 @@
+index=main 
+
+| eval index_date = strftime(_indextime, "%Y-%m-%d")
+
+| eval current_date = strftime(now(),"%Y-%m-%d")  
+
+| where current_date = index_date
+
+| updatedb update_type="add"
