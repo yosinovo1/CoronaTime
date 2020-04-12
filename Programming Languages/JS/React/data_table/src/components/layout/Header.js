@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -45,21 +47,37 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export default function Header() {
     const classes = useStyles();
+
+    const [open, setOpen] = React.useState(true);
+    let hrefElements = window.location.href.split("/");
+    const [selected, setSelected] = React.useState(hrefElements[hrefElements.length - 1]);
 
     return (
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <Typography variant="h6" >
-                        Data Table
-                    </Typography>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={() => setOpen(!open)}
+                        edge="start"
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <a href="/" style={{ "textDecoration": "none", "color": "white" }} >
+                        <Typography variant="h6" >
+                            Data Table
+                        </Typography>
+                    </a>
                 </Toolbar>
             </AppBar>
             <Drawer
+                open={open}
                 className={classes.drawer}
-                variant="permanent"
+                variant="persistent"
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -67,16 +85,16 @@ export default function Header() {
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <List>
-                        <Link style={{ "textDecoration": "none", "color": "white" }} to="/">
-                            <ListItem button key="Home">
-                                <ListItemIcon><HomeIcon /></ListItemIcon>
+                        <Link style={{ "textDecoration": "none", "color": "white" }} to="/" onClick={() => setSelected("")}>
+                            <ListItem style={selected === "" ? { "backgroundColor": "rgba(255, 255, 255, 0.08)" } : {}} button key="Home">
+                                <ListItemIcon><HomeIcon color={selected === "" ? "action" : "disabled"} /></ListItemIcon>
                                 <ListItemText primary="Home" />
                             </ListItem>
                         </Link>
                         <Divider />
-                        <Link style={{ "textDecoration": "none", "color": "white" }} to="/people">
-                            <ListItem button key="People Info">
-                                <ListItemIcon><PeopleIcon /></ListItemIcon>
+                        <Link style={{ "backgroundColor": "white", "textDecoration": "none", "color": "white" }} to="/people" onClick={() => setSelected("people")}>
+                            <ListItem style={selected === "people" ? { "backgroundColor": "rgba(255, 255, 255, 0.08)" } : {}} button key="People Info">
+                                <ListItemIcon><PeopleIcon color={selected === "people" ? "action" : "disabled"} /></ListItemIcon>
                                 <ListItemText primary="People Info" />
                             </ListItem>
                         </Link>
