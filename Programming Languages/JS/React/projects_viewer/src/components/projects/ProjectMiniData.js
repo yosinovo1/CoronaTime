@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 
 import Collapse from '@material-ui/core/Collapse';
 import Card from '@material-ui/core/Card';
@@ -16,14 +15,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ProjectNotFound from '../common/ProjectNotFound';
-import PageNotFound from '../common/PageNotFound';
 
-class ProjectData extends Component {
+
+class ProjectMiniData extends Component {
 
     constructor(props) {
         super(props);
 
+        this.projectData = props.projectData;
+        this.editableData = JSON.parse(JSON.stringify(this.projectData))
         this.state = {
             expandInfo: false,
             editInfo: false,
@@ -114,59 +114,44 @@ class ProjectData extends Component {
     }
 
     render() {
-        if(this.props.projects.filter((projectData) => projectData.serialNumber === this.props.match.params.id).length === 0) {
-            return <PageNotFound />
-        }
-
-        this.projectData = this.props.filteredProjects.filter((projectData) => projectData.serialNumber === this.props.match.params.id)[0];
         return (
-            <div>
-            {this.projectData ? 
-                <div style={{ "margin": "2rem", "display": "flex", "justifyContent": "center" }}>
-                    <Card variant="outlined" style={{ "width": "60vw", "textAlign": "right" }} >
-                        <CardContent>
-                            <a style={{ "textDecoration": "none", "color": "white" }} href={`/projects/${this.projectData.serialNumber}`}>
-                                <Typography align="center" color="textPrimary" variant="h5" component="h1" gutterBottom>
-                                    {this.presentProjectIdentifier()}
-                                </Typography>
-                            </a>
-                            <Card variant="outlined" style={{ "padding": "1rem" }}>
-                                {this.state.saving ? <div style={{"display": "flex", "justifyContent": "center"}}><CircularProgress  /></div> : null}
+            <div style={{ "margin": "2rem", "display": "flex", "justifyContent": "center" }}>
+                <Card variant="outlined" style={{ "width": "60vw", "textAlign": "right" }} >
+                    <CardContent>
+                        <a style={{ "textDecoration": "none", "color": "white" }} href={`/projects/${this.projectData.serialNumber}`}>
+                            <Typography align="center" color="textPrimary" variant="h5" component="h1" gutterBottom>
+                                {this.presentProjectIdentifier()}
+                            </Typography>
+                        </a>
+                        <Card variant="outlined" style={{ "padding": "1rem" }}>
+                            {this.state.saving ? <div style={{"display": "flex", "justifyContent": "center"}}><CircularProgress  /></div> : null}
+                            <Typography color="textSecondary">
+                                {!this.state.editInfo && !this.state.saving ? this.presentBasicProject() : null}
+                                {this.state.editInfo ? this.presentEditableProject() : null}
+                            </Typography>
+                            <Collapse in={this.state.expandInfo} timeout="auto" unmountOnExit>
                                 <Typography color="textSecondary">
-                                    {!this.state.editInfo && !this.state.saving ? this.presentBasicProject() : null}
-                                    {this.state.editInfo ? this.presentEditableProject() : null}
+                                    {this.presentExtendedProject()}
                                 </Typography>
-                                <Collapse in={this.state.expandInfo} timeout="auto" unmountOnExit>
-                                    <Typography color="textSecondary">
-                                        {this.presentExtendedProject()}
-                                    </Typography>
-                                </Collapse>
-                            </Card>
-                        </CardContent>
-                        <CardActions style={{"display": "flex", "justifyContent": "space-between"}}>
-                            {!this.state.editInfo && !this.state.saving ? <Tooltip title={this.state.expandInfo ? "הצג פחות" : "הצג עוד" } aria-label="expand"><IconButton size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? <ExpandLessIcon /> : <ExpandMoreIcon /> }</IconButton></Tooltip> : null}
-                            {!this.state.editInfo && !this.state.saving ? <Tooltip title="ערוך" aria-label="edit"><IconButton size="medium" onClick={() => this.setState({ editInfo: !this.state.editInfo, expandInfo: false })}><EditIcon /></IconButton></Tooltip> : null}
-                            {this.state.editInfo && !this.state.saving ? 
-                                <Fragment>
-                                    <Tooltip title="שמור" aria-label="save"><IconButton onClick={() => this.handleCloseEdit(true)}><DoneIcon /></IconButton ></Tooltip>
-                                    <Tooltip title="בטל" aria-label="cancel"><IconButton onClick={() => this.handleCloseEdit(false)}><CloseIcon /></IconButton></Tooltip>
-                                </Fragment>
-                                :
-                                null
-                            }
-                        </CardActions>
-                    </Card>
-                </div>
-                : <ProjectNotFound />
-            }
+                            </Collapse>
+                        </Card>
+                    </CardContent>
+                    <CardActions style={{"display": "flex", "justifyContent": "space-between"}}>
+                        {!this.state.editInfo && !this.state.saving ? <Tooltip title={this.state.expandInfo ? "הצג פחות" : "הצג עוד" } aria-label="expand"><IconButton size="medium" onClick={() => this.setState({ expandInfo: !this.state.expandInfo })}>{this.state.expandInfo ? <ExpandLessIcon /> : <ExpandMoreIcon /> }</IconButton></Tooltip> : null}
+                        {!this.state.editInfo && !this.state.saving ? <Tooltip title="ערוך" aria-label="edit"><IconButton size="medium" onClick={() => this.setState({ editInfo: !this.state.editInfo, expandInfo: false })}><EditIcon /></IconButton></Tooltip> : null}
+                        {this.state.editInfo && !this.state.saving ? 
+                            <Fragment>
+                                <Tooltip title="שמור" aria-label="save"><IconButton onClick={() => this.handleCloseEdit(true)}><DoneIcon /></IconButton ></Tooltip>
+                                <Tooltip title="בטל" aria-label="cancel"><IconButton onClick={() => this.handleCloseEdit(false)}><CloseIcon /></IconButton></Tooltip>
+                            </Fragment>
+                            :
+                            null
+                        }
+                    </CardActions>
+                </Card>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    projects: state.projects.projects,
-    filteredProjects: state.projects.filteredProjects,
-});
-
-export default connect(mapStateToProps)(ProjectData)
+export default ProjectMiniData

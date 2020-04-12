@@ -1,22 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
-import ProjectData from './ProjectData';
+import ProjectMiniData from "./ProjectMiniData";
+import ProjectNotFound from "../common/ProjectNotFound";
 
 class Dashboard extends Component {
-    static propTypes = {
-        selectedProject: PropTypes.object
-    }
 
     render() {
+        console.log(this.props.filteredProjects)
         return (
             <Fragment>
                 <div style={{ "display": "flex", "flexWrap": "wrap", "alignItems": "left", "justifyContent": "center" }}>
-                    {this.props.filteredProjects.map(projectData =>
-                        <ProjectData key={projectData.serialNumber} projectData={projectData} />
-                    )}
+                    {this.props.filteredProjects.length !== 0 ?
+                        this.props.filteredProjects.map(projectData => <ProjectMiniData key={projectData.serialNumber} projectData={projectData} />)
+                        : <ProjectNotFound />
+                    }
                 </div>
             </Fragment>
         )
@@ -25,7 +24,6 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
     projects: state.projects.projects,
-    selectedProject: state.projects.selectedProject,
     filteredProjects: state.projects.filteredProjects
 });
 

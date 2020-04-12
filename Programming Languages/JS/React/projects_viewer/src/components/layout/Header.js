@@ -91,23 +91,19 @@ class Header extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          padding: "0.5rem",
-          backgroundColor: "rgba(255, 255, 255, 0.08)",
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "row-reverse",
-        }}
-      >
-        <Typography variant="h6">פרוייקטים</Typography>
+      <div style={{ "padding": "0.5rem", "backgroundColor": "rgba(255, 255, 255, 0.08)", "display": "flex", "justifyContent": "space-between" }}>
+        <Typography variant="h5" style={{ "paddingTop": "0.4rem" }}>
+          <a style={{ "textDecoration": "none", "color": "white" }} href="/">
+            פרוייקטים
+          </a>
+        </Typography>
         <Paper component="form" className={this.classes.root}>
           <InputBase
             placeholder="חפש בפרוייקטים..."
             onChange={(e) => this.filterProjects(e.target.value)}
             autoFocus
             inputProps={{
-              style: { textAlign: "right", width: "33vw", padding: "0.5rem" },
+              style: { textAlign: "right", width: "33vw", "padding": "0.5rem" }
             }}
           />
           <IconButton className={this.classes.iconButton} aria-label="search">
