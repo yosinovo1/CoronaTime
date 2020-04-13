@@ -21,6 +21,9 @@ import Dashboard from './components/people/Dashboard';
 const theme = createMuiTheme({
   palette: {
     type: "dark",
+    primary: {
+      main: '#121212',
+    },
   }
 });
 

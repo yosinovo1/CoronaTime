@@ -52,7 +52,7 @@ export default function Header() {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(true);
-    let hrefElements = window.location.href.split("/");
+    const hrefElements = window.location.href.split("/");
     const [selected, setSelected] = React.useState(hrefElements[hrefElements.length - 1]);
 
     return (
