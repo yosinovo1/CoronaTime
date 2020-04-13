@@ -7,7 +7,7 @@ import {
 
 import './App.css';
 
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './store'
 
 import {
@@ -27,26 +27,42 @@ const theme = createMuiTheme({
   }
 });
 
+function _App() {
+  const isDrawerOpen = useSelector(state => state.common.isDrawerOpen)
+  let marginLeft;
+  if (isDrawerOpen) {
+    marginLeft = "240px"
+  }
+  else {
+    marginLeft = "0"
+  }
+
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Header />
+        <div style={{ "marginLeft": marginLeft, "marginTop": "5rem", "display": "flex", "justify-content": "center" }}>
+          <Switch>
+            <Route path="/people" exact>
+              <Dashboard />
+            </Route>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ThemeProvider>
+  );
+}
+
 function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Header />
-          <div style={{ "marginLeft": "240px", "marginTop": "5rem", "display": "flex", "justify-content": "center" }}>
-            <Switch>
-              <Route path="/people" exact>
-                <Dashboard />
-              </Route>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </ThemeProvider>
+      <_App />
     </Provider>
-  );
+  )
 }
 
 export default App;

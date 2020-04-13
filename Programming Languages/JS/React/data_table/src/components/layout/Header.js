@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-
+import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,6 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleIcon from '@material-ui/icons/Contacts';
 import HomeIcon from '@material-ui/icons/Home';
+import { SET_DRAWER_OPEN_STATE } from '../../actions/types';
 
 const drawerWidth = 240;
 const headerHeight = 56;
@@ -47,13 +48,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 export default function Header() {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(true);
     const hrefElements = window.location.href.split("/");
     const [selected, setSelected] = React.useState(hrefElements[hrefElements.length - 1]);
+    const dispatch = useDispatch()
+
+    const handleMenuButtonClick = () => {
+        dispatch({ type: SET_DRAWER_OPEN_STATE, payload: !open })
+        setOpen(!open)
+    }
 
     return (
         <div className={classes.root}>
@@ -62,7 +68,7 @@ export default function Header() {
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={() => setOpen(!open)}
+                        onClick={handleMenuButtonClick}
                         edge="start"
                     >
                         <MenuIcon />
