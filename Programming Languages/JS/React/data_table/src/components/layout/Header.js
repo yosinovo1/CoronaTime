@@ -17,7 +17,7 @@ import PeopleIcon from '@material-ui/icons/Contacts';
 import HomeIcon from '@material-ui/icons/Home';
 import { SET_DRAWER_OPEN_STATE } from '../../actions/types';
 
-const drawerWidth = 240;
+export const drawerWidth = 240;
 const headerHeight = 56;
 
 const useStyles = makeStyles((theme) => ({
@@ -42,10 +42,6 @@ const useStyles = makeStyles((theme) => ({
     drawerContainer: {
         overflow: 'auto',
     },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
 }));
 
 export default function Header() {
@@ -55,6 +51,7 @@ export default function Header() {
     const hrefElements = window.location.href.split("/");
     const [selected, setSelected] = React.useState(hrefElements[hrefElements.length - 1]);
     const dispatch = useDispatch()
+    const selectedItemStyle = { "backgroundColor": "rgba(255, 255, 255, 0.08)" };
 
     const handleMenuButtonClick = () => {
         dispatch({ type: SET_DRAWER_OPEN_STATE, payload: !open })
@@ -73,7 +70,7 @@ export default function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <a href="/" style={{ "textDecoration": "none", "color": "white" }} >
+                    <a href="/" className="App-link" >
                         <Typography variant="h6" >
                             Data Table
                         </Typography>
@@ -91,15 +88,15 @@ export default function Header() {
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <List>
-                        <Link style={{ "textDecoration": "none", "color": "white" }} to="/" onClick={() => setSelected("")}>
-                            <ListItem style={selected === "" ? { "backgroundColor": "rgba(255, 255, 255, 0.08)" } : {}} button key="Home">
+                        <Link className="App-link" to="/" onClick={() => setSelected("")}>
+                            <ListItem style={selected === "" ? selectedItemStyle : {}} button key="Home">
                                 <ListItemIcon><HomeIcon color={selected === "" ? "action" : "disabled"} /></ListItemIcon>
                                 <ListItemText primary="Home" />
                             </ListItem>
                         </Link>
                         <Divider />
-                        <Link style={{ "backgroundColor": "white", "textDecoration": "none", "color": "white" }} to="/people" onClick={() => setSelected("people")}>
-                            <ListItem style={selected === "people" ? { "backgroundColor": "rgba(255, 255, 255, 0.08)" } : {}} button key="People Info">
+                        <Link className="App-link" to="/people" onClick={() => setSelected("people")}>
+                            <ListItem style={selected === "people" ? selectedItemStyle : {}} button key="People Info">
                                 <ListItemIcon><PeopleIcon color={selected === "people" ? "action" : "disabled"} /></ListItemIcon>
                                 <ListItemText primary="People Info" />
                             </ListItem>

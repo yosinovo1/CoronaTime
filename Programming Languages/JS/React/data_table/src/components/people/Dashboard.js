@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import MaterialTable from 'material-table';
 
 import { getPeopleData, setPeopleData } from '../../actions/people';
+import PersonDetailPanel from './PersonDetailPanel';
 
-const citiesLookup = { 1: 'Netanya', 2: 'Tel-Aviv' };
+export const citiesLookup = { 1: 'Netanya', 2: 'Tel-Aviv' };
 
 class Dashboard extends Component {
 
@@ -40,7 +41,7 @@ class Dashboard extends Component {
                         selection: true,
                         actionsColumnIndex: -1,
                         headerStyle: {
-                            "fontWeight": "bold",
+                            "fontSize": "1.15rem"
                         }
                     }}
                     actions={[
@@ -93,9 +94,7 @@ class Dashboard extends Component {
                     }}
                     detailPanel={rowData => {
                         return (
-                            <div style={{ "display": "flex", "justifyContent": "center" }}>
-                                <p>{`${rowData.name} ${rowData.surname} was born in ${rowData.birthYear} at ${citiesLookup[rowData.birthCity]}`}</p>
-                            </div>
+                            <PersonDetailPanel personInfo={rowData} />
                         )
                     }}
                     onRowClick={(event, rowData, togglePanel) => togglePanel()}

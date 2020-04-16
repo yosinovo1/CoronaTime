@@ -4,12 +4,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
 import './App.css';
-
 import { Provider, useSelector } from 'react-redux';
 import store from './store'
-
 import {
   createMuiTheme
 } from "@material-ui/core";
@@ -17,6 +14,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Header from './components/layout/Header';
 import Home from './components/common/Home';
 import Dashboard from './components/people/Dashboard';
+import { drawerWidth } from './components/layout/Header';
 
 const theme = createMuiTheme({
   palette: {
@@ -31,7 +29,7 @@ function _App() {
   const isDrawerOpen = useSelector(state => state.common.isDrawerOpen)
   let marginLeft;
   if (isDrawerOpen) {
-    marginLeft = "240px"
+    marginLeft = `${drawerWidth}px`
   }
   else {
     marginLeft = "0"
@@ -42,7 +40,7 @@ function _App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Header />
-        <div style={{ "marginLeft": marginLeft, "marginTop": "5rem", "display": "flex", "justify-content": "center" }}>
+        <div className="App-body" style={{ "marginLeft": marginLeft }}>
           <Switch>
             <Route path="/people" exact>
               <Dashboard />
