@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'rollingStone';
+    src: url('royalacid-webfont.woff2') format('woff2'),
+         url('royalacid-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title {
+    font-family: rollingStone;
+    font-size: 7em;
+    color: white;
+}
+
+.title-container {    
+    display: flex;
+    align-items: center;
+    padding-top: 1em;    
+    padding-left: 2em;
+}
+
+.title-container img {
+    background-color: transparent;
+    height: 7em;
+    margin-left: 2em;
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

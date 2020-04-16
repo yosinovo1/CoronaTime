@@ -1,0 +1,17 @@
+$fadeout-color: rgb(252, 55, 88);
+$fadein-color: rgb(248, 44, 44);
+
+.head-container {
+  background-image: linear-gradient($fadeout-color, $fadein-color);
+}
+
+html {
+  background-color: $fadein-color;
+}
+
+.head-container .seperator {
+  background-color: white;
+  width: 98%;
+  height: 1px;
+  margin: 0 auto;
+}

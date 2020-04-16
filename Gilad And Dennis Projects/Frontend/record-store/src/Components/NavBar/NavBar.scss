@@ -1,0 +1,38 @@
+$notSelectedSize: 1.3em;
+$selectedSize: 1.4em;
+$categoryWidth: 20%;
+$categoryHeight: 100%;
+$growthDuration: 0.2s;
+
+.nav-bar {
+    list-style: none;
+    margin: 3em auto 1em auto;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
+    width: 70%;
+}
+
+.nav-bar .not-selected {
+    color: white;
+    opacity: 60%;
+    font-size: $notSelectedSize;
+    transition: opacity $growthDuration, font-size $growthDuration;
+    width: $categoryWidth;
+    text-align: center;
+}
+
+.nav-bar .selected {
+    color: white;
+    opacity: 100%;
+    font-size: $selectedSize;    
+    width: $categoryWidth;
+    text-align: center;
+}
+
+.nav-bar .not-selected:hover {
+    opacity: 100%;
+    font-size: $selectedSize;
+    cursor: pointer;
+}
+
