@@ -16,12 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.generic import TemplateView
 from shop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('songs/', views.song_list),
     path('songs/<int:pk>', views.song_detail),
+    path('songs/by_substring/<str:substring>', views.song_substring_filter),
+    path('songs/by_album/<str:albumname>/<str:artistname>', views.song_album_filter),
+    path('songs/by_artist/<str:artistname>', views.song_artist_filter),
+    path('albums/by_substring/<str:substring>', views.album_substring_filter),
+    path('albums/by_artist/<str:artistname>', views.album_artist_filter),
+    path('albums/<str:albumname>/<str:artistname>', views.album_detail),
+    path('artists/<str:artistname>', views.artist_detail),
+    path('artists/by_substring/<str:substring>', views.artist_substring_filter),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

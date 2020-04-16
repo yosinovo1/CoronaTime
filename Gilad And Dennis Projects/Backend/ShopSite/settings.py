@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'narb+cb#f9*8o(lkicfw+9$tn@ay5i%k%m%y7-b7itb(e(%!aa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [INTERNAL_HOST_IP, EXTERNAL_HOST_IP]
 
@@ -58,7 +58,9 @@ ROOT_URLCONF = 'ShopSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'reactintroapp/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT = 'C:/ShopSite/static_root/'
+
+# STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'reactintroapp/build/static'),  
+    
+# ]
