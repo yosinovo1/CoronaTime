@@ -18,9 +18,9 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Card style={{ "display": "inline-block", "backgroundColor": "rgba(255, 255, 255, 0.05)", "margin": "1.5rem", "padding": "1.5rem" }}>
+            <Card className="Card-background" style={{ "backgroundColor": "rgba(255, 255, 255, 0.05)" }}>
                 <MaterialTable
-                    title="People Info"
+                    title='People Info'
                     columns={[
                         { title: 'Name', field: 'name' },
                         { title: 'Surname', field: 'surname' },
@@ -41,7 +41,7 @@ class Dashboard extends Component {
                         selection: true,
                         actionsColumnIndex: -1,
                         headerStyle: {
-                            "fontSize": "1.15rem"
+                            'fontSize': '1.15rem'
                         }
                     }}
                     actions={[

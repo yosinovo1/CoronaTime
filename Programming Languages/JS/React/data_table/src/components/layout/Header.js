@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -22,12 +22,12 @@ const headerHeight = 56;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: "flex",
+        display: 'flex',
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: "#202020",
-        boxShadow: "none",
+        backgroundColor: '#202020',
+        boxShadow: 'none',
         height: headerHeight
     },
     drawer: {
@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: "#202020",
-        border: "none"
+        backgroundColor: '#202020',
+        border: 'none'
     },
     drawerContainer: {
         overflow: 'auto',
@@ -48,10 +48,10 @@ export default function Header() {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(true);
-    const hrefElements = window.location.href.split("/");
+    const hrefElements = window.location.href.split('/');
     const [selected, setSelected] = React.useState(hrefElements[hrefElements.length - 1]);
     const dispatch = useDispatch()
-    const selectedItemStyle = { "backgroundColor": "rgba(255, 255, 255, 0.08)" };
+    const selectedItemStyle = { 'backgroundColor': 'rgba(255, 255, 255, 0.08)' };
 
     const handleMenuButtonClick = () => {
         dispatch({ type: SET_DRAWER_OPEN_STATE, payload: !open })
@@ -60,18 +60,18 @@ export default function Header() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position='fixed' className={classes.appBar}>
                 <Toolbar>
                     <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
+                        color='inherit'
+                        aria-label='open drawer'
                         onClick={handleMenuButtonClick}
-                        edge="start"
+                        edge='start'
                     >
                         <MenuIcon />
                     </IconButton>
-                    <a href="/" className="App-link" >
-                        <Typography variant="h6" >
+                    <a href='/' className='App-link' >
+                        <Typography variant='h6' >
                             Data Table
                         </Typography>
                     </a>
@@ -80,7 +80,7 @@ export default function Header() {
             <Drawer
                 open={open}
                 className={classes.drawer}
-                variant="persistent"
+                variant='persistent'
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -88,17 +88,17 @@ export default function Header() {
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <List>
-                        <Link className="App-link" to="/" onClick={() => setSelected("")}>
-                            <ListItem style={selected === "" ? selectedItemStyle : {}} button key="Home">
-                                <ListItemIcon><HomeIcon color={selected === "" ? "action" : "disabled"} /></ListItemIcon>
-                                <ListItemText primary="Home" />
+                        <Link className='App-link' to='/' onClick={() => setSelected('')}>
+                            <ListItem style={selected === '' ? selectedItemStyle : {}} button key='Home'>
+                                <ListItemIcon><HomeIcon color={selected === '' ? 'action' : 'disabled'} /></ListItemIcon>
+                                <ListItemText primary='Home' />
                             </ListItem>
                         </Link>
                         <Divider />
-                        <Link className="App-link" to="/people" onClick={() => setSelected("people")}>
-                            <ListItem style={selected === "people" ? selectedItemStyle : {}} button key="People Info">
-                                <ListItemIcon><PeopleIcon color={selected === "people" ? "action" : "disabled"} /></ListItemIcon>
-                                <ListItemText primary="People Info" />
+                        <Link className='App-link' to='/people' onClick={() => setSelected('people')}>
+                            <ListItem style={selected === 'people' ? selectedItemStyle : {}} button key='People Info'>
+                                <ListItemIcon><PeopleIcon color={selected === 'people' ? 'action' : 'disabled'} /></ListItemIcon>
+                                <ListItemText primary='People Info' />
                             </ListItem>
                         </Link>
                     </List>

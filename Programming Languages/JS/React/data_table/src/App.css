@@ -35,6 +35,12 @@
   color: white;
 }
 
+.Card-background {
+  display: inline-block;
+  margin: 1.5rem;
+  padding: 1.5rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
