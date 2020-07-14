@@ -8,7 +8,7 @@ def find_longest_substring_without_repeating_chars(s: str) -> str:
             continue
         if len(current_seq) > len(longest_seq):
             longest_seq = current_seq
-        current_seq = c
+        current_seq = current_seq[current_seq.index(c) + 1:]
 
     return longest_seq
 
