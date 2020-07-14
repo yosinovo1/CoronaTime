@@ -10,8 +10,8 @@ def longest_palindrome(s: str) -> str:
 
     longest_seq = ""
     for i in range(len(s)):
-        for j in range(i + 1, len(s)):
-            sub_str = s[i:j]
+        for j in range(i, len(s)):
+            sub_str = s[i:j + 1]
             if len(sub_str) > len(longest_seq) and is_palindrome(sub_str):
                 longest_seq = sub_str
 
@@ -21,6 +21,9 @@ def longest_palindrome(s: str) -> str:
 def main():
     print(longest_palindrome("babad"))
     print(longest_palindrome("cbbd"))
+    print(longest_palindrome("a"))
+    print(longest_palindrome("abcbaa"))
+    print(longest_palindrome("abcbadddddd"))
 
 
 if __name__ == "__main__":
